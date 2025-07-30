@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Data
@@ -21,6 +22,8 @@ public class PizzaOrderSummaryDto {
 	public static class PizzaOrders {
 		private String name;
 		private Long quantity;
+		private BigDecimal totalRevenue;
+		private BigDecimal orderedRatio;
 	}
 }
 
