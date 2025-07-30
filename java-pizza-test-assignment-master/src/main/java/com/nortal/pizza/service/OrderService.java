@@ -44,7 +44,7 @@ public class OrderService {
 
 	public List<OrderDto> findByOrdersAddress(String address) {
 		String lowerAddress = address.toLowerCase();
-		return orderRepository.findByOrdersAadress(lowerAddress)
+		return orderRepository.findByOrdersAddress(lowerAddress)
 				.stream()
 				.map(this::mapEntity)
 				.collect(Collectors.toList());
