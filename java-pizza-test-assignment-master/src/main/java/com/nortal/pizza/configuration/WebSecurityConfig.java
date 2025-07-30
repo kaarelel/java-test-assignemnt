@@ -19,6 +19,7 @@ import javax.sql.DataSource;
 @EnableGlobalMethodSecurity(prePostEnabled = true, proxyTargetClass = true)
 @RequiredArgsConstructor
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+
 	private final DataSource dataSource;
 
 	@Override
@@ -34,10 +35,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.jdbcAuthentication()
 				.dataSource(dataSource)
-
 				.usersByUsernameQuery("SELECT username, password, enabled FROM user WHERE username = ?")
 				.authoritiesByUsernameQuery("SELECT username, CASE WHEN is_admin THEN 'ROLE_ADMIN' ELSE 'ROLE_USER' END AS role " + "FROM user WHERE username = ?")
-
 				.passwordEncoder(passwordEncoder());
 	}
 
@@ -46,9 +45,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	public AuthenticationManager authenticationManagerBean() throws Exception {
 		return super.authenticationManagerBean();
 	}
+
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		return NoOpPasswordEncoder.getInstance();
 	}
-
 }

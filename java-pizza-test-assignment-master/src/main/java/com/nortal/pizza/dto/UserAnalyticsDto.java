@@ -12,6 +12,7 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserAnalyticsDto {
+
 	private Integer userId;
 	private BigDecimal averageOrderPrice;
 }

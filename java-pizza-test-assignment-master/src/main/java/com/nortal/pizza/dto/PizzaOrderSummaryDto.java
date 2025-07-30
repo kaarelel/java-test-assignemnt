@@ -13,6 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class PizzaOrderSummaryDto {
+
 	private List<PizzaOrders> pizzaOrders;
 
 	@Data
