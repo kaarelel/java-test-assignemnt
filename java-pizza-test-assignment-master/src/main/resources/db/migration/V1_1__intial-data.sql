@@ -26,16 +26,16 @@ values ('Capricciosa', 7.99),
        ('Tirolese', 12.99);
 
 --dummy order
-INSERT INTO order_(client_id, address, date_created)
-values ((SELECT id FROM user WHERE username = 'client@nortal.com'), 'Rinktines g. 5, Vilnius', CURRENT_TIMESTAMP),
-       ((SELECT id FROM user WHERE username = 'client@nortal.com'), 'Traku g. 1, Vilnius', CURRENT_TIMESTAMP),
-       ((SELECT id FROM user WHERE username = 'client@nortal.com'), 'Vilniaus g. 2, Vilnius', CURRENT_TIMESTAMP),
-       ((SELECT id FROM user WHERE username = 'client@nortal.com'), 'Kauno g. 3, Vilnius', CURRENT_TIMESTAMP),
-       ((SELECT id FROM user WHERE username = 'client@nortal.com'), 'Tilto g. 5, Vilnius', CURRENT_TIMESTAMP),
-       ((SELECT id FROM user WHERE username = 'client@nortal.com'), 'Gedimino pr. 11, Vilnius', CURRENT_TIMESTAMP),
-       ((SELECT id FROM user WHERE username = 'benediktas@nortal.com'), 'Benedikto g. 5, Vilnius', CURRENT_TIMESTAMP),
-       ((SELECT id FROM user WHERE username = 'benediktas@nortal.com'), 'Benedikto g. 5, VILNIUS', CURRENT_TIMESTAMP),
-       ((SELECT id FROM user WHERE username = 'benediktas@nortal.com'), 'Turgaus g. 12, Vilnius', CURRENT_TIMESTAMP);
+INSERT INTO order_(client_id, address, date_created, price)
+values ((SELECT id FROM user WHERE username = 'client@nortal.com'), 'Rinktines g. 5, Vilnius', CURRENT_TIMESTAMP, 20.97),
+       ((SELECT id FROM user WHERE username = 'client@nortal.com'), 'Traku g. 1, Vilnius', CURRENT_TIMESTAMP, 13.98),
+       ((SELECT id FROM user WHERE username = 'client@nortal.com'), 'Vilniaus g. 2, Vilnius', CURRENT_TIMESTAMP, 14.98),
+       ((SELECT id FROM user WHERE username = 'client@nortal.com'), 'Kauno g. 3, Vilnius', CURRENT_TIMESTAMP, 7.99),
+       ((SELECT id FROM user WHERE username = 'client@nortal.com'), 'Tilto g. 5, Vilnius', CURRENT_TIMESTAMP, 11.99),
+       ((SELECT id FROM user WHERE username = 'client@nortal.com'), 'Gedimino pr. 11, Vilnius', CURRENT_TIMESTAMP, 12.99),
+       ((SELECT id FROM user WHERE username = 'benediktas@nortal.com'), 'Benedikto g. 5, Vilnius', CURRENT_TIMESTAMP, 17.98),
+       ((SELECT id FROM user WHERE username = 'benediktas@nortal.com'), 'Benedikto g. 5, VILNIUS', CURRENT_TIMESTAMP, 17.98),
+       ((SELECT id FROM user WHERE username = 'benediktas@nortal.com'), 'Turgaus g. 12, Vilnius', CURRENT_TIMESTAMP, 12.99);
 
 INSERT INTO order_pizza(pizza_id, order_id)
 values ((SELECT id FROM pizza WHERE name = 'Capricciosa'), (SELECT id FROM order_ WHERE address = 'Rinktines g. 5, Vilnius')),
