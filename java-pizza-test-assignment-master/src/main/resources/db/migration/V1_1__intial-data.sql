@@ -1,16 +1,16 @@
 --admin users
 INSERT INTO user(username, password, is_admin, enabled, date_created)
-values ('user-admin', 'randompassword', 1, 1, CURRENT_TIMESTAMP);
+values ('user-admin', 'randompassword', TRUE, TRUE, CURRENT_TIMESTAMP);
 INSERT INTO user(username, password, is_admin, enabled, date_created)
-values ('user-disabled', 'randompassword', 1, 0, CURRENT_TIMESTAMP);
+values ('user-disabled', 'randompassword', TRUE, FALSE, CURRENT_TIMESTAMP);
 
 --client users
 INSERT INTO user(username, password, is_admin, enabled, date_created)
-values ('client@nortal.com', 'randompassword', 0, 1, CURRENT_TIMESTAMP);
+values ('client@nortal.com', 'randompassword', FALSE, TRUE, CURRENT_TIMESTAMP);
 INSERT INTO user(username, password, is_admin, enabled, date_created)
-values ('candidate@nortal.com', 'randompassword', 0, 1, CURRENT_TIMESTAMP);
+values ('candidate@nortal.com', 'randompassword', FALSE, TRUE, CURRENT_TIMESTAMP);
 INSERT INTO user(username, password, is_admin, enabled, date_created)
-values ('benediktas@nortal.com', 'randompassword', 0, 1, CURRENT_TIMESTAMP);
+values ('benediktas@nortal.com', 'randompassword', FALSE, TRUE, CURRENT_TIMESTAMP);
 
 --pizza list
 INSERT INTO pizza(name, price)

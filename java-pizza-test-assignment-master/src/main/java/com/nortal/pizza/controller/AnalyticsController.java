@@ -6,12 +6,13 @@ import lombok.RequiredArgsConstructor;
 import com.nortal.pizza.dto.UserAnalyticsDto;
 import com.nortal.pizza.service.AnalyticsService;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-
+@PreAuthorize("principal.enabled")
 @RestController
 @RequestMapping(path = "/analytics")
 @RequiredArgsConstructor
