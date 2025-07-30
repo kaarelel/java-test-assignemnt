@@ -4,12 +4,12 @@ import com.nortal.pizza.domain.OrderEntity;
 import com.nortal.pizza.domain.PizzaEntity;
 import com.nortal.pizza.dto.OrderDto;
 import com.nortal.pizza.exception.EntityNotFoundException;
-import com.nortal.pizza.repository.OrderRepository;
-import com.nortal.pizza.repository.UserRepository;
-import com.nortal.pizza.security.SpringSecuritySecurityContextProvider;
+import com.nortal.pizza.repository.*;
+import com.nortal.pizza.security.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -24,6 +24,7 @@ public class OrderService {
 		OrderEntity orderEntity = new OrderEntity();
 		orderEntity.setAddress(orderDto.getAddress());
 		orderEntity.setClient(userRepository.findByUsername(securityContextProvider.getUser().getUsername()));
+		orderEntity.setPrice(new BigDecimal("9.99"));
 		orderEntity = orderRepository.save(orderEntity);
 
 		return mapEntity(orderEntity);

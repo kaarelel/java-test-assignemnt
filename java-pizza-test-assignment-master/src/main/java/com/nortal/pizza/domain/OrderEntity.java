@@ -14,7 +14,9 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -41,9 +43,9 @@ public class OrderEntity {
 			name = "order_pizza",
 			joinColumns = @JoinColumn(name = "order_id"),
 			inverseJoinColumns = @JoinColumn(name = "pizza_id"))
-	private List<PizzaEntity> pizzas;
+	private List<PizzaEntity> pizzas = new ArrayList<>();
 
-	@Column(nullable = false)
-	private java.math.BigDecimal price;
+	@Column(name = "price", insertable = false, updatable = false)
+	private BigDecimal price;
 
 }
