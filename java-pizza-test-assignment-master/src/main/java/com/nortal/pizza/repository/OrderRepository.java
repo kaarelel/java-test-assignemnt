@@ -7,6 +7,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public interface OrderRepository extends CrudRepository<OrderEntity, Integer> {
@@ -19,4 +20,7 @@ public interface OrderRepository extends CrudRepository<OrderEntity, Integer> {
 
 	@Query("SELECT AVG(o.price) FROM OrderEntity o WHERE o.client.id = :clientId")
 	BigDecimal findAveragePriceByClientId(@Param("clientId") Integer clientId);
+
+	@Query("SELECT o FROM OrderEntity o WHERE o.dateCreated BETWEEN :startOfCurrentWeek AND :now")
+	List<OrderEntity> findOrdersFromThisWeek(@Param("startOfCurrentWeek") LocalDateTime startOfCurrentWeek, @Param("now") LocalDateTime now);
 }
