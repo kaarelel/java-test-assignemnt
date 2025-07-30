@@ -1,6 +1,7 @@
 package com.nortal.pizza.service;
 
 import com.nortal.pizza.domain.OrderEntity;
+import com.nortal.pizza.domain.PizzaEntity;
 import com.nortal.pizza.dto.OrderDto;
 import com.nortal.pizza.exception.EntityNotFoundException;
 import com.nortal.pizza.repository.OrderRepository;
@@ -41,10 +42,24 @@ public class OrderService {
 				.collect(Collectors.toList());
 	}
 
-	private OrderDto mapEntity(final OrderEntity orderEntity) {
+	public List<OrderDto> findByOrdersAddress(String address) {
+		String lowerAddress = address.toLowerCase();
+		return orderRepository.findByOrdersAadress(lowerAddress)
+				.stream()
+				.map(this::mapEntity)
+				.collect(Collectors.toList());
+	}
+
+	private OrderDto mapEntity(final OrderEntity orderEntity) { //clean up needed
+		List<String> pizzaNames = orderEntity.getPizzas()
+				.stream()
+				.map(PizzaEntity::getName)
+				.collect(Collectors.toList());
+
 		return OrderDto.builder()
 				.id(orderEntity.getId())
 				.address(orderEntity.getAddress())
+				.pizzas(pizzaNames)
 				.build();
 	}
 }

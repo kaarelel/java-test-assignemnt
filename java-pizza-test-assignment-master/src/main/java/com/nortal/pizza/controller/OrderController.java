@@ -31,9 +31,8 @@ public class OrderController {
     }
 
     @PostMapping("/find-by-address")
-    public List<OrderDto> findOrderByAddress(@RequestBody final String address) {
-        //assignment: implement find by address
-        return Collections.emptyList();
+    public List<OrderDto> findByOrdersAddress(@RequestBody final String address) {
+        return orderService.findByOrdersAddress(address);
     }
 
     @PostMapping
