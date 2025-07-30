@@ -43,4 +43,7 @@ public class OrderEntity {
 			inverseJoinColumns = @JoinColumn(name = "pizza_id"))
 	private List<PizzaEntity> pizzas;
 
+	@Column(nullable = false)
+	private java.math.BigDecimal price;
+
 }

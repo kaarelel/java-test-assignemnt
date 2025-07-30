@@ -50,16 +50,14 @@ public class OrderService {
 				.collect(Collectors.toList());
 	}
 
-	private OrderDto mapEntity(final OrderEntity orderEntity) { //clean up needed
-		List<String> pizzaNames = orderEntity.getPizzas()
-				.stream()
-				.map(PizzaEntity::getName)
-				.collect(Collectors.toList());
-
+	private OrderDto mapEntity(final OrderEntity orderEntity) {
 		return OrderDto.builder()
 				.id(orderEntity.getId())
 				.address(orderEntity.getAddress())
-				.pizzas(pizzaNames)
+				.pizzas(orderEntity.getPizzas().stream()
+						.map(PizzaEntity::getName)
+						.collect(Collectors.toList()))
+				.price(orderEntity.getPrice())
 				.build();
 	}
 }

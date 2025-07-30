@@ -2,7 +2,8 @@ CREATE TABLE order_ (
 id int NOT NULL AUTO_INCREMENT,
 client_id int,
 address clob,
-date_created timestamp
+date_created timestamp,
+price decimal(10, 2) NOT NULL DEFAULT 9.99
 );
 
 CREATE TABLE pizza (
